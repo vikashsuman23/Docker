@@ -48,3 +48,23 @@ docker exec starts a new, separate process inside the container.
         -- service apache2 status
 
         -- ctrl p q
+
+Clean up
+---------
+docker ps -a
+
+Delete all containers
+----------------------
+
+docker ps -aq  [List only container-ids]
+docker kill $(docker ps -aq)  
+docker ps -a   [ All containers are in exit state ]
+docker rm $(docker ps -aq)
+docker ps -a
+
+Delete all the images
+---------------------
+docker images -q
+docker rmi -f $(docker images -q)
+docker images
+
