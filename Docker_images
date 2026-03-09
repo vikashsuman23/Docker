@@ -1,0 +1,50 @@
+A Docker image is made up of multiple layers, which are stacked on top of each other. 
+Each layer represents a set of file changes (like adding, modifying, or deleting files) and helps in optimizing storage and reusability.
+
+There are two ways to get images
+       1. Create image from Dockerfile
+       2. Pull the images from dockerhub
+
+-- docker pull amazonlinux    [ To get image amazonlinux or ubuntu from dockerhub ]
+-- docker pull ubuntu           [ To get image ubuntu from dockerhub ]
+-- docker images
+-- docker ps -a                 [To list all running and stopped containers]	
+
+
+-- docker run -it --name amazonlinuxcontainer amazonlinux   [ To create container , -it = interactive(go inside container), amazonlinuxcontainer is a container name , amazonlinux is image ]
+-- docker run -it -d --name ubuntucontainer ubuntu  [If you dont want to login to container and just want to create a container and run in detach mode use -d]
+
+docker attach (to go inside container)
+-------------
+is used to attach your terminal to the standard input, output, and error streams of the main process running inside a container.
+It allows you to interact with the container's main process as if you were running it directly in your terminal.
+
+Example: attaching/connecting to main wire
+if you use exit command, container is stopped
+docker attach interacts with the container's main process (PID 1).
+
+Docker attach and exec will help to access the container
+
+-- docker attach 1275f407dc04
+ 
+       -- ctrl p q
+
+docker exec (to go inside container,EXEC is preferred)
+-----------
+is used to run a new command in an already running container.
+This command allows you to start additional processes inside the container independently of the main process.
+
+Example: connecting to additional process
+if you use exit command, container will not stop
+
+docker exec starts a new, separate process inside the container.
+
+-- docker exec -it 1275f407dc04 /bin/bash
+
+        -- apt update -y
+        -- apt install git -y
+        -- apt install apache2 -y
+        -- service apache2 start
+        -- service apache2 status
+
+        -- ctrl p q
