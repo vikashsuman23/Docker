@@ -23,3 +23,17 @@ EXPOSE        : to give port number
 
 Dockerfile --> Docker Build -->  Image --> Container
 
+Example 1
+=========
+vi Dockerfile
+
+FROM ubuntu
+RUN apt update -y
+RUN apt install git maven tree apache2 -y
+RUN touch file1
+
+-- docker build -t image1:v1 .    [  . represent current directory where we have dockerfile ]
+
+-- docker run -it --name cont1 image1:v1   [ You will be now in container and see versions of softwares installed ]
+
+   -- ctrl pq
