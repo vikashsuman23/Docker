@@ -1,0 +1,38 @@
+
+Container
+=========
+Same as VM's,Container dont have OS,OS will be on images,Server = AMI, Container = IMAGE,Its free
+container is a bundle of packages , it uses Base OS for resources
+TO create Container, we use a software called Docker
+
+DOCKER
+=====
+Docker alternatives in market - Rocket , ContainerD, Podman, CRIO
+Its an free and opensource
+It is a platform independent
+It is used to create, run and deploy applications on containers
+It is introduced in 2013, written in GO (Google Official ) Language
+We use YAML in dockers
+Docker uses host resources (CPU, memory , etc)
+Docker is majorly used in Linux, but runs on Windows also
+
+DOCKER COMPONENTS:
+-----------------
+DOCKER CLIENT: it interacts with us (command -- > execute -- > output)
+DOCKER HOST: Where we install docker (EC2, Laptop, Vm)
+DOCKER DAEMON: manages all docker components (Conatiners, Images, Volume)
+DOCKER REGISTRY: it manages all the docker images.
+
+Docker Installation
+-------------------
+Launch AL2023 EC2 instance
+-- yum install docker -y
+-- systemctl start docker
+-- systemctl status docker
+-- docker -v
+
+Commands
+--------
+-- docker images        [ To show list of images ]
+-- docker ps             [To Show list of Running Containers]
+-- docker ps -a    [To list all running and stopped containers]
