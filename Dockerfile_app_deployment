@@ -1,0 +1,40 @@
+First Dockerfile Task for application Deployment
+===============================================
+
+Code - GitHub --> DockerFile --> Build Image --> Create Container --> Access application
+
+yum install git -y
+
+git clone https://github.com/vikashsuman23/Docker/tree/main/website
+
+--> dont go inside website folder, create Dockerfile outside website
+
+vi Dockerfile
+
+FROM ubuntu
+RUN apt update
+RUN apt install apache2 -y
+RUN apt install apache2-utils -y
+RUN apt clean
+COPY website/ /var/www/html/
+RUN service apache2 restart
+EXPOSE 80
+CMD ["/usr/sbin/apachectl", "-D", "FOREGROUND"]
+
+
+-D FOREGROUND → Runs Apache in the foreground mode, meaning:
+Apache does not daemonize (does not run in the background).
+Logs are printed to the container's stdout/stderr, making it visible with docker logs.
+The process stays alive, preventing the container from exiting immediately.
+Containers stop when the main process exits. Running Apache in foreground mode ensures the container remains active.
+
+
+-- docker build -t firstproject:v1 .
+
+-- docker run -itd --name newwebcont1 -p 80:80 firstproject:v1
+
+In AWS SG , allow All traffic
+
+http://ip
+
+Note: docker rmi firstimage:v1 [if required]
